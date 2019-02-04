@@ -21,8 +21,25 @@
                      <translate>About</translate>
                   </a>
                </li>
+               <li>
+                  <language-picker @input="changeLocale"/>
+               </li>
             </ul>
          </nav>
       </div>
    </footer>
 </template>
+
+<script>
+import LanguagePicker from "@/components/LanguagePicker.vue";
+
+export default {
+    components: {LanguagePicker},
+
+    methods: {
+        changeLocale(code) {
+            this.$i18n.locale = code;
+        }
+    }
+}
+</script>
