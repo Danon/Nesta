@@ -188,18 +188,18 @@
             <nav-tabs-card>
                <template slot="content">
                   <span class="md-nav-tabs-title">
-                     <translate>Orders</translate>:
+                     <translate>Notes</translate>
                   </span>
-                  <md-tabs md-sync-route class="md-success" md-alignment="left">
-                     <md-tab id="tab-home" md-label="Important" md-icon="bug_report">
+                  <md-tabs md-dynamic-height class="md-success" md-alignment="left">
+                     <md-tab id="tab-important" :md-label="$t('Important')" md-icon="warning">
                         <nav-tabs-table></nav-tabs-table>
                      </md-tab>
 
-                     <md-tab id="tab-pages" md-label="Moderate" md-icon="code">
+                     <md-tab id="tab-moderate" :md-label="$t('Moderate')" md-icon="notifications_none">
                         <nav-tabs-table></nav-tabs-table>
                      </md-tab>
 
-                     <md-tab id="tab-posts" md-label="Not important" md-icon="cloud">
+                     <md-tab id="tab-irrelevant" :md-label="$t('Irrelevant')" md-icon="bookmark_border">
                         <nav-tabs-table></nav-tabs-table>
                      </md-tab>
                   </md-tabs>
