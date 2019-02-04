@@ -5,36 +5,44 @@
             <md-card>
                <md-card-header data-background-color="green">
                   <h4 class="title">Resources</h4>
-                  <p class="category">Amount and prices of purchased materials</p>
+                  <p class="category">
+                     Amount and prices of purchased materials
+                  </p>
                </md-card-header>
 
                <md-card-content>
                   <div>
                      <md-table v-model="users">
                         <md-table-row slot="md-table-row" slot-scope="{ item }">
-                           <md-table-cell md-label="Definition">{{ item.definition }}</md-table-cell>
-                           <md-table-cell md-label="Quantity">{{ item.quantity }} {{ item.unit }}</md-table-cell>
-                           <md-table-cell md-label="Price">{{ item.price }} zł</md-table-cell>
-                           <md-table-cell md-label="Certificate">
+                           <md-table-cell :md-label="$t('Definition')">{{ item.definition }}</md-table-cell>
+                           <md-table-cell :md-label="$t('Quantity')">{{ item.quantity }} {{ item.unit }}</md-table-cell>
+                           <md-table-cell :md-label="$t('Price')">{{ item.price }} zł</md-table-cell>
+                           <md-table-cell :md-label="$t('Certificate')">
                               <a href="#" v-if="item.certificate"
                                  title="Download certificate"
                                  @click="downloadCertificate()">
                                  {{ item.certificate }}
                                  <md-icon>archive</md-icon>
-                                 <md-tooltip md-direction="top">Download this certificate</md-tooltip>
+                                 <md-tooltip md-direction="top">
+                                    <translate>Download this certificate</translate>
+                                 </md-tooltip>
                               </a>
                               <a href="#" v-else
                                  title="Upload certificate for this resource"
                                  @click="uploadCertificate()">
                                  <md-icon>add</md-icon>
-                                 Add certificate
-                                 <md-tooltip md-direction="top">Upload new certificate</md-tooltip>
+                                 <translate>Add certificate</translate>
+                                 <md-tooltip md-direction="top">
+                                    <translate>Upload new certificate</translate>
+                                 </md-tooltip>
                               </a>
                            </md-table-cell>
                            <md-table-cell>
                               <a href="#" @click="editResource()">
                                  <md-icon>create</md-icon>
-                                 <md-tooltip md-direction="top">Edit resource information</md-tooltip>
+                                 <md-tooltip md-direction="top">
+                                    <translate>Edit resource information</translate>
+                                 </md-tooltip>
                               </a>
                            </md-table-cell>
                         </md-table-row>
@@ -45,7 +53,7 @@
                <div class="md-layout-item md-size-100 text-right">
                   <md-button class="md-raised md-success" @click="createResource()">
                      <md-icon>add</md-icon>
-                     Add resource
+                     <translate>Add resource</translate>
                   </md-button>
                </div>
             </md-card>
@@ -108,27 +116,27 @@ export default {
     methods: {
         createResource() {
             this.$notify({
-                message: "This feature is not ready yet. Wait for a new version of the application",
+                message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "warning" // "", "info", "success", "warning", "danger"
             });
         },
 
         downloadCertificate() {
             this.$notify({
-                message: "This feature is not ready yet. Wait for a new version of the application",
+                message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "warning" // "", "info", "success", "warning", "danger"
             });
         },
 
         uploadCertificate() {
             this.$notify({
-                message: "This feature is not ready yet. Wait for a new version of the application",
+                message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "warning" // "", "info", "success", "warning", "danger"
             });
         },
         editResource() {
             this.$notify({
-                message: "This feature is not ready yet. Wait for a new version of the application",
+                message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "warning" // "", "info", "success", "warning", "danger"
             });
         }

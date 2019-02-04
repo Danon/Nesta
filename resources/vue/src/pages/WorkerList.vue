@@ -4,8 +4,12 @@
          <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
             <md-card class="md-card-plain">
                <md-card-header data-background-color="green">
-                  <h4 class="title">Workers statistics</h4>
-                  <p class="category">List of workers productiveness</p>
+                  <h4 class="title">
+                     <translate>Workers Statistics</translate>
+                  </h4>
+                  <p class="category">
+                     <translate>List of workers productiveness</translate>
+                  </p>
                </md-card-header>
                <md-card-content>
                   <workers-table></workers-table>
@@ -14,7 +18,7 @@
                <div class="md-layout-item md-size-100 text-right">
                   <md-button class="md-raised md-success" @click="createWorker()">
                      <md-icon>add</md-icon>
-                     Invite worker
+                     <translate>Invite worker</translate>
                   </md-button>
                </div>
             </md-card>

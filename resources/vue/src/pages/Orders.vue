@@ -4,51 +4,63 @@
          <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
             <md-card>
                <md-card-header data-background-color="green">
-                  <h4 class="title">Orders</h4>
-                  <p class="category">Table presenting current orders</p>
+                  <h4 class="title">
+                     <translate>Orders</translate>
+                  </h4>
+                  <p class="category">
+                     <translate>Table presenting current orders</translate>
+                  </p>
                </md-card-header>
 
                <md-card-content>
                   <md-table v-model="orders">
                      <md-table-row slot="md-table-row" slot-scope="{ item }">
-                        <md-table-cell md-label="Name">{{ item.name }}</md-table-cell>
+                        <md-table-cell :md-label="$t('Name')">{{ item.name }}</md-table-cell>
 
-                        <md-table-cell md-label="Products">
+                        <md-table-cell :md-label="$t('Products')">
                            <span>
                               {{ item.products }} / {{ item.productsAll }}
                               <md-icon v-if="item.products === item.productsAll">done</md-icon>
-                              <md-tooltip md-direction="top">Finished / All</md-tooltip>
+                              <md-tooltip md-direction="top">
+                                 <translate>Finished / All</translate>
+                              </md-tooltip>
                            </span>
                         </md-table-cell>
 
-                        <md-table-cell md-label="Due">
+                        <md-table-cell :md-label="$t('Due')">
                            <verbal-time v-if="item.products < item.productsAll" :date="item.due"></verbal-time>
-                           <span v-else>Finished</span>
+                           <translate v-else>Finished</translate>
                         </md-table-cell>
 
-                        <md-table-cell md-label="Date">
+                        <md-table-cell :md-label="$t('Date')">
                            {{item.due.toLocaleDateString() }}
                            <md-tooltip md-direction="top">at {{ item.due.toLocaleTimeString() }}</md-tooltip>
                         </md-table-cell>
 
-                        <md-table-cell md-label="Price">{{ asCurrency(item.price) }}</md-table-cell>
+                        <md-table-cell :md-label="$t('Price')">{{ asCurrency(item.price) }}</md-table-cell>
 
-                        <md-table-cell md-label="Cost">{{ asCurrency(item.cost) }}</md-table-cell>
+                        <md-table-cell :md-label="$t('Cost')">{{ asCurrency(item.cost) }}</md-table-cell>
 
-                        <md-table-cell md-label="Income">
+                        <md-table-cell :md-label="$t('Income')">
                            <span :class="markupClass(item)">{{ formatItemMarkup(item) }}</span>
-                           <md-tooltip md-direction="top">Incomes compared to losses</md-tooltip>
+                           <md-tooltip md-direction="top">
+                              <translate>Incomes compared to losses</translate>
+                           </md-tooltip>
                         </md-table-cell>
 
                         <md-table-cell>
                            <a href="#" @click="deleteOrder()">
                               <md-icon>delete</md-icon>
-                              <md-tooltip md-direction="top">Delete an order</md-tooltip>
+                              <md-tooltip md-direction="top">
+                                 <translate>Delete an order</translate>
+                              </md-tooltip>
                            </a>
                            &nbsp;&nbsp;&nbsp;
                            <a href="#" @click="sendCustomerNotification()">
                               <md-icon>send</md-icon>
-                              <md-tooltip md-direction="top">Send an e-mail to customer</md-tooltip>
+                              <md-tooltip md-direction="top">
+                                 <translate>Send an e-mail to customer</translate>
+                              </md-tooltip>
                            </a>
                         </md-table-cell>
                      </md-table-row>
@@ -58,17 +70,17 @@
                      <md-button class="md-raised md-success" @click="createOrder()">
                         <md-icon>trending_up</md-icon>
                         &nbsp;
-                        External order
+                        <translate>External order</translate>
                      </md-button>
                      &nbsp;
                      <md-button class="md-raised md-success" @click="createOrder()">
                         <md-icon>add</md-icon>
-                        New order
+                        <translate>New order</translate>
                      </md-button>
                   </div>
 
                   <md-checkbox v-model="showArchived">
-                     Show archived orders
+                     <translate>Show archived orders</translate>
                   </md-checkbox>
                </md-card-content>
             </md-card>
@@ -173,27 +185,27 @@ export default {
 
         createOrder() {
             this.$notify({
-                message: "This feature is not ready yet. Wait for a new version of the application",
+                message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "warning" // "", "info", "success", "warning", "danger"
             });
         },
 
         deleteOrder() {
             this.$notify({
-                message: "This feature is not ready yet. Wait for a new version of the application",
+                message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "warning" // "", "info", "success", "warning", "danger"
             });
         },
         sendCustomerNotification() {
             this.$notify({
-                message: "This feature is not ready yet. Wait for a new version of the application",
+                message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "warning" // "", "info", "success", "warning", "danger"
             });
         },
 
         showArchivedToggle() {
             this.$notify({
-                message: "This feature is not ready yet. Wait for a new version of the application",
+                message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "info" // "", "info", "success", "warning", "danger"
             });
         }

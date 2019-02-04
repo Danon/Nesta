@@ -5,7 +5,9 @@
       </div>
 
       <md-card-content>
-         <h6 class="category text-gray">Współwłaściciel</h6>
+         <h6 class="category text-gray">
+            <translate>CEO</translate>
+         </h6>
          <h4 class="card-title">Dominik Sakłak</h4>
 
          <p class="card-description">Pamiętaj, że najlepszą drogą do sukcesu są chęci i sumienna praca.</p>

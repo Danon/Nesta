@@ -2,7 +2,9 @@
    <md-toolbar md-elevation="0" class="md-transparent">
       <div class="md-toolbar-row">
          <div class="md-toolbar-section-start">
-            <h3 class="md-title">{{ $route.name }}</h3>
+            <h3 class="md-title">
+               <translate :text="$route.name"/>
+            </h3>
          </div>
          <div class="md-toolbar-section-end">
             <md-button
@@ -17,9 +19,12 @@
             <div class="md-collapse">
                <div class="md-autocomplete">
                   <md-autocomplete class="search" v-model="selectedEmployee" :md-options="employees">
-                     <label>Search...</label>
+                     <label>
+                        <translate>Search...</translate>
+                     </label>
                   </md-autocomplete>
                </div>
+
                <md-list>
                   <md-list-item to="/">
                      <i class="material-icons">dashboard</i>
@@ -31,7 +36,9 @@
                         <a slot="title" class="dropdown-toggle" data-toggle="dropdown">
                            <i class="material-icons">notifications</i>
                            <span class="notification">5</span>
-                           <p class="hidden-lg hidden-md">Notifications</p>
+                           <p class="hidden-lg hidden-md">
+                              <translate>Notifications</translate>
+                           </p>
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-right">

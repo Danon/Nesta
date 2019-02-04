@@ -5,10 +5,13 @@
             <md-table-cell>
                <md-icon>person_outline</md-icon>
             </md-table-cell>
-            <md-table-cell md-label="Name">{{ item.name }}</md-table-cell>
-            <md-table-cell md-label="Salary">{{ item.salary }} zł</md-table-cell>
-            <md-table-cell md-label="Products">{{ item.finishedProcuts }}</md-table-cell>
-            <md-table-cell md-label="Average speed">{{ item.average }} min / product</md-table-cell>
+            <md-table-cell :md-label="$t('Name')">{{ item.name }}</md-table-cell>
+            <md-table-cell :md-label="$t('Salary')">{{ item.salary }} zł</md-table-cell>
+            <md-table-cell :md-label="$t('Products')">{{ item.finishedProcuts }}</md-table-cell>
+            <md-table-cell :md-label="$t('Average speed')">
+               {{ item.average }}
+               <translate>min / product</translate>
+            </md-table-cell>
          </md-table-row>
       </md-table>
    </div>

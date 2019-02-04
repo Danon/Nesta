@@ -5,14 +5,16 @@
             <md-table-cell>
                <md-icon>build</md-icon>
             </md-table-cell>
-            <md-table-cell md-label="Name">{{ item.name }}</md-table-cell>
-            <md-table-cell md-label="For order">{{ item.order }}</md-table-cell>
-            <md-table-cell md-label="Materials">{{ item.materialCost }} zł</md-table-cell>
+            <md-table-cell :md-label="$t('Name')">{{ item.name }}</md-table-cell>
+            <md-table-cell :md-label="$t('For order')">{{ item.order }}</md-table-cell>
+            <md-table-cell :md-label="$t('Materials')">{{ item.materialCost }} zł</md-table-cell>
             <md-table-cell>+</md-table-cell>
-            <md-table-cell md-label="Worker Effort">{{ item.time }} minutes * {{ item.workerCost}} zł/h</md-table-cell>
-            <md-table-cell md-label="Worker Cost">{{ formatWorkerCost(item) }} zł</md-table-cell>
+            <md-table-cell :md-label="$t('Worker Effort')">
+               {{ item.time }} minutes * {{ item.workerCost}} zł/h
+            </md-table-cell>
+            <md-table-cell :md-label="$t('Worker Cost')">{{ formatWorkerCost(item) }} zł</md-table-cell>
             <md-table-cell>=</md-table-cell>
-            <md-table-cell md-label="Cost">{{ formatOverallCost(item)}} zł</md-table-cell>
+            <md-table-cell :md-label="$t('Cost')">{{ formatOverallCost(item)}} zł</md-table-cell>
          </md-table-row>
       </md-table>
    </div>

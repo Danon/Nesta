@@ -1,7 +1,7 @@
 <template>
    <div class="sidebar" :data-color="activeColor" :data-image="backgroundImage" :style="sidebarStyle">
       <div class="logo">
-         <a href="http://nesta.pl/" class="simple-text" title="Visit nesta.pl website" target="_blank">
+         <a href="http://nesta.pl/" class="simple-text" :title="$t('Visit nesta.pl website')" target="_blank">
             <img :src="imgLogo" alt="Nesta SC"/>
          </a>
       </div>

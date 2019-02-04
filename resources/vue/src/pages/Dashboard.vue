@@ -8,17 +8,19 @@
                   :chart-type="'Line'"
                   data-background-color="blue">
                <template slot="content">
-                  <h4 class="title">Daily Sales</h4>
+                  <h4 class="title">
+                     <translate>Daily Sales</translate>
+                  </h4>
                   <p class="category">
                      <span class="text-success"><i class="fas fa-long-arrow-alt-up"></i> 55%</span>
-                     increase in today sales.
+                     <translate>increase in today sales.</translate>
                   </p>
                </template>
 
                <template slot="footer">
                   <div class="stats">
                      <md-icon>access_time</md-icon>
-                     updated 4 minutes ago
+                     <translate>updated 4 minutes ago</translate>
                   </div>
                </template>
             </chart-card>
@@ -32,16 +34,18 @@
                   :chart-type="'Bar'"
                   data-background-color="red">
                <template slot="content">
-                  <h4 class="title">Finished Products</h4>
+                  <h4 class="title">
+                     <translate>Finished Products</translate>
+                  </h4>
                   <p class="category">
-                     Last Order Products Performance
+                     <translate>Last Order Products Performance</translate>
                   </p>
                </template>
 
                <template slot="footer">
                   <div class="stats">
                      <md-icon>access_time</md-icon>
-                     updated 10 days ago
+                     <translate>updated 10 days ago</translate>
                   </div>
                </template>
             </chart-card>
@@ -54,16 +58,18 @@
                   :chart-type="'Line'"
                   data-background-color="green">
                <template slot="content">
-                  <h4 class="title">Completed Orders</h4>
+                  <h4 class="title">
+                     <translate>Completed Orders</translate>
+                  </h4>
                   <p class="category">
-                     Last Order Products Performance
+                     <translate>Last Order Products Performance</translate>
                   </p>
                </template>
 
                <template slot="footer">
                   <div class="stats">
                      <md-icon>access_time</md-icon>
-                     campaign sent 26 minutes ago
+                     <translate>campaign sent 26 minutes ago</translate>
                   </div>
                </template>
             </chart-card>
@@ -76,14 +82,16 @@
                </template>
 
                <template slot="content">
-                  <p class="category">Revenue</p>
+                  <p class="category">
+                     <translate>Income</translate>
+                  </p>
                   <h3 class="title">+ $34,245</h3>
                </template>
 
                <template slot="footer">
                   <div class="stats">
                      <md-icon>date_range</md-icon>
-                     Last 24 Hours
+                     <translate>Last 24 Hours</translate>
                   </div>
                </template>
             </stats-card>
@@ -96,7 +104,9 @@
                </template>
 
                <template slot="content">
-                  <p class="category">Used steel</p>
+                  <p class="category">
+                     <translate>Used steel</translate>
+                  </p>
                   <h3 class="title">
                      49/50
                      <small>kg</small>
@@ -106,7 +116,9 @@
                <template slot="footer">
                   <div class="stats">
                      <md-icon class="text-danger">warning</md-icon>
-                     <a href="#">Get more steel...</a>
+                     <a href="#">
+                        <translate>Get more steel...</translate>
+                     </a>
                   </div>
                </template>
             </stats-card>
@@ -119,14 +131,16 @@
                </template>
 
                <template slot="content">
-                  <p class="category">Finished Orders</p>
+                  <p class="category">
+                     <translate>Finished Orders</translate>
+                  </p>
                   <h3 class="title">75</h3>
                </template>
 
                <template slot="footer">
                   <div class="stats">
                      <md-icon>local_offer</md-icon>
-                     Loaded from e-mails
+                     <translate>Loaded from e-mails</translate>
                   </div>
                </template>
             </stats-card>
@@ -139,14 +153,16 @@
                </template>
 
                <template slot="content">
-                  <p class="category">Manufactured Products</p>
+                  <p class="category">
+                     <translate>Manufactured Products</translate>
+                  </p>
                   <h3 class="title">245</h3>
                </template>
 
                <template slot="footer">
                   <div class="stats">
                      <md-icon>update</md-icon>
-                     Just Updated
+                     <translate>Just Updated</translate>
                   </div>
                </template>
             </stats-card>
@@ -155,8 +171,12 @@
          <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
             <md-card>
                <md-card-header data-background-color="orange">
-                  <h4 class="title">Workers Statistics</h4>
-                  <p class="category">Productiveness of employees on 3rd February, 2019</p>
+                  <h4 class="title">
+                     <translate>Workers Statistics</translate>
+                  </h4>
+                  <p class="category">
+                     <translate>Productiveness of employees on 3rd February, 2019</translate>
+                  </p>
                </md-card-header>
                <md-card-content>
                   <workers-table table-header-color="orange"></workers-table>
@@ -167,7 +187,9 @@
          <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
             <nav-tabs-card>
                <template slot="content">
-                  <span class="md-nav-tabs-title">Orders:</span>
+                  <span class="md-nav-tabs-title">
+                     <translate>Orders</translate>:
+                  </span>
                   <md-tabs md-sync-route class="md-success" md-alignment="left">
                      <md-tab id="tab-home" md-label="Important" md-icon="bug_report">
                         <nav-tabs-table></nav-tabs-table>

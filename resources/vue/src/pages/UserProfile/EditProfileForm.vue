@@ -3,22 +3,30 @@
       <form v-if="worker">
          <md-card>
             <md-card-header :data-background-color="dataBackgroundColor">
-               <h4 class="title">Edit Profile</h4>
-               <p class="category">Complete worker's personal details</p>
+               <h4 class="title">
+                  <translate>Edit Profile</translate>
+               </h4>
+               <p class="category">
+                  <translate>Complete worker's personal details</translate>
+               </p>
             </md-card-header>
 
             <md-card-content>
                <div class="md-layout">
                   <div class="md-layout-item md-small-size-100 md-size-50">
                      <md-field>
-                        <label>Worker ID</label>
+                        <label>
+                           <translate>Worker ID</translate>
+                        </label>
                         <md-input v-model="worker.workerId" type="text"></md-input>
                      </md-field>
                   </div>
 
                   <div class="md-layout-item md-small-size-100 md-size-50">
                      <md-field>
-                        <label>Email Address (disabled)</label>
+                        <label>
+                           <translate>Email Address (disabled)</translate>
+                        </label>
                         <md-input v-model="worker.emailAddress" type="email" disabled></md-input>
                      </md-field>
                   </div>
@@ -28,42 +36,54 @@
 
          <md-card>
             <md-card-header :data-background-color="dataBackgroundColor">
-               <h4 class="title">Additional personal information</h4>
+               <h4 class="title">
+                  <translate>Additional personal information</translate>
+               </h4>
             </md-card-header>
 
             <md-card-content>
                <div class="md-layout">
                   <div class="md-layout-item md-small-size-100 md-size-50">
                      <md-field>
-                        <label>First Name</label>
+                        <label>
+                           <translate>First Name</translate>
+                        </label>
                         <md-input v-model="worker.firstName" type="text"></md-input>
                      </md-field>
                   </div>
 
                   <div class="md-layout-item md-small-size-100 md-size-50">
                      <md-field>
-                        <label>Last Name</label>
+                        <label>
+                           <translate>Last Name</translate>
+                        </label>
                         <md-input v-model="worker.lastName" type="text"></md-input>
                      </md-field>
                   </div>
 
                   <div class="md-layout-item md-small-size-100 md-size-33">
                      <md-field>
-                        <label>Company (disabled)</label>
+                        <label>
+                           <translate>Company (disabled)</translate>
+                        </label>
                         <md-input value="Nesta SC" disabled></md-input>
                      </md-field>
                   </div>
 
                   <div class="md-layout-item md-small-size-100 md-size-33">
                      <md-field>
-                        <label>Phone number</label>
+                        <label>
+                           <translate>Phone number</translate>
+                        </label>
                         <md-input v-model="worker.phone" type="phone"></md-input>
                      </md-field>
                   </div>
 
                   <div class="md-layout-item md-small-size-100 md-size-33">
                      <md-field>
-                        <label>Wage</label>
+                        <label>
+                           <translate>Wage</translate>
+                        </label>
                         <md-input v-model="worker.wage" type="number" min="1"></md-input>
                         <span class="suffix">zł/h</span>
                      </md-field>
@@ -71,14 +91,16 @@
 
                   <div class="md-layout-item md-size-100">
                      <md-field maxlength="5">
-                        <label>Notes</label>
+                        <label>
+                           <translate>Notes</translate>
+                        </label>
                         <md-textarea v-model="worker.note"></md-textarea>
                      </md-field>
                   </div>
 
                   <div class="md-layout-item md-size-100 text-right">
                      <md-button class="md-raised md-success" @click="updateProfile()">
-                        Update Profile
+                        <translate>Update Profile</translate>
                      </md-button>
                   </div>
                </div>
@@ -86,7 +108,7 @@
          </md-card>
       </form>
       <div v-else>
-         Worker not found
+         <translate> Worker not found</translate>
       </div>
    </div>
 </template>
@@ -173,7 +195,7 @@ export default {
     methods: {
         updateProfile() {
             this.$notify({
-                message: "This feature is not ready yet. Wait for a new version of the application",
+                message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "warning" // "", "info", "success", "warning", "danger"
             });
         }

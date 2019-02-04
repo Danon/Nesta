@@ -6,11 +6,15 @@
             <md-table-cell>
                <md-button class="md-just-icon md-simple md-primary">
                   <md-icon>edit</md-icon>
-                  <md-tooltip md-direction="top">Edit</md-tooltip>
+                  <md-tooltip md-direction="top">
+                     <translate>Edit</translate>
+                  </md-tooltip>
                </md-button>
                <md-button class="md-just-icon md-simple md-danger">
                   <md-icon>delete</md-icon>
-                  <md-tooltip md-direction="top">Delete</md-tooltip>
+                  <md-tooltip md-direction="top">
+                     <translate>Delete</translate>
+                  </md-tooltip>
                </md-button>
             </md-table-cell>
          </md-table-row>

@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
 import VueRouter from "vue-router";
+import i18n from './plugins/i18n';
+import Translate from './plugins/Translate';
 import App from "./App";
 import routes from "./routes";
 
@@ -23,6 +25,7 @@ Vue.use(MaterialDashboard);
 Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(Notifications);
+Vue.component('translate', Translate);
 
 Vue.prototype.$Chartist = Chartist;
 
@@ -30,5 +33,6 @@ new Vue({
     el: "#app",
     render: h => h(App),
     router,
+    i18n,
     data: {Chartist}
 });

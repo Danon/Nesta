@@ -6,41 +6,55 @@
          <mobile-menu slot="content"></mobile-menu>
          <sidebar-link to="/dashboard">
             <md-icon>dashboard</md-icon>
-            <p>Dashboard</p>
+            <p>
+               <translate>Dashboard</translate>
+            </p>
          </sidebar-link>
 
          <sidebar-separator/>
 
          <sidebar-link to="/orders">
             <md-icon>shopping_cart</md-icon>
-            <p>Orders</p>
+            <p>
+               <translate>Orders</translate>
+            </p>
          </sidebar-link>
 
          <sidebar-link to="/products">
             <md-icon>build</md-icon>
-            <p>Products</p>
+            <p>
+               <translate>Products</translate>
+            </p>
          </sidebar-link>
 
          <sidebar-link to="/resources">
             <md-icon>list</md-icon>
-            <p>Resources</p>
+            <p>
+               <translate>Resources</translate>
+            </p>
          </sidebar-link>
 
          <sidebar-link to="/resource-definitions">
             <md-icon>rate_review</md-icon>
-            <p>Resource definitions</p>
+            <p>
+               <translate>Resource definitions</translate>
+            </p>
          </sidebar-link>
 
          <sidebar-separator/>
 
          <sidebar-link to="/workers">
             <md-icon>person</md-icon>
-            <p>Workers</p>
+            <p>
+               <translate>Workers</translate>
+            </p>
          </sidebar-link>
 
          <sidebar-link to="#" class="position-bottom" @click="download()">
             <md-icon>archive</md-icon>
-            <p>Download raports</p>
+            <p>
+               <translate>Download reports</translate>
+            </p>
          </sidebar-link>
       </side-bar>
 
@@ -71,7 +85,7 @@ export default {
     methods: {
         download() {
             this.$notify({
-                message: "This feature is not ready yet. Wait for a new version of the application",
+                message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "warning" // "", "info", "success", "warning", "danger"
             });
         }
