@@ -98,6 +98,7 @@ const translations = {
     "Visit nesta.pl website": {pl: "Odwiedź stronę nesta.pl"},
     "New note": {pl: "Nowa notatka"},
     "There are no notes.": {pl: "Nie ma żadnych notatek."},
+    "Missing": {pl: "Brak"},
 };
 
 function transformToI18nFormat(map) {

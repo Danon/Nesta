@@ -1,7 +1,14 @@
 <template>
    <md-table v-model="orders">
       <md-table-row slot="md-table-row" slot-scope="{ item }">
-         <md-table-cell :md-label="$t('Name')">{{ item.name }}</md-table-cell>
+         <md-table-cell :md-label="$t('ID')">#{{ item.id }}</md-table-cell>
+
+         <md-table-cell :md-label="$t('Name')">
+            {{ item.name }}
+            <span v-if="item.name === null" class="missing-value">
+               <translate>Missing</translate>
+            </span>
+         </md-table-cell>
 
          <md-table-cell :md-label="$t('Products')">
             <span>
@@ -118,6 +125,11 @@ export default {
 
    .markup-red {
       color: red;
+   }
+
+   span.missing-value {
+      font-style: italic;
+      opacity: 0.2;
    }
 
    .ws-no-wrap {

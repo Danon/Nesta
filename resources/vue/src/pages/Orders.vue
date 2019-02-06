@@ -78,7 +78,7 @@ export default {
                 },
                 {
                     id: 18,
-                    name: "PL-19-00458",
+                    name: null,
                     products: 1,
                     productsAll: 14,
                     price: 1435.42,
@@ -96,7 +96,7 @@ export default {
                 },
                 {
                     id: 17,
-                    name: "PL-12-05452",
+                    name: null,
                     products: 3,
                     productsAll: 3,
                     price: 612.61,
