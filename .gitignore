@@ -2,9 +2,7 @@
 /node_modules
 /public/hot
 /public/storage
-/public/css
-/public/js
-/public/img
+/public/build
 /resources/vue/node_modules
 /storage/*
 /vendor

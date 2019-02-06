@@ -1,4 +1,5 @@
 module.exports = {
-    outputDir: "../../public",
-    indexPath: "../resources/views/index.blade.php" // relative to outputDir
+    baseUrl: "/build",
+    outputDir: "../../public/build",
+    indexPath: "../../resources/views/index.blade.php" // relative to outputDir
 };
