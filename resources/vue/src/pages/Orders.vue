@@ -13,58 +13,7 @@
                </md-card-header>
 
                <md-card-content>
-                  <md-table v-model="orders">
-                     <md-table-row slot="md-table-row" slot-scope="{ item }">
-                        <md-table-cell :md-label="$t('Name')">{{ item.name }}</md-table-cell>
-
-                        <md-table-cell :md-label="$t('Products')">
-                           <span>
-                              {{ item.products }} / {{ item.productsAll }}
-                              <md-icon v-if="item.products === item.productsAll">done</md-icon>
-                              <md-tooltip md-direction="top">
-                                 <translate>Finished / All</translate>
-                              </md-tooltip>
-                           </span>
-                        </md-table-cell>
-
-                        <md-table-cell :md-label="$t('Due')">
-                           <verbal-time v-if="item.products < item.productsAll" :date="item.due"></verbal-time>
-                           <translate v-else>Finished</translate>
-                        </md-table-cell>
-
-                        <md-table-cell :md-label="$t('Date')">
-                           {{item.due.toLocaleDateString() }}
-                           <md-tooltip md-direction="top">at {{ item.due.toLocaleTimeString() }}</md-tooltip>
-                        </md-table-cell>
-
-                        <md-table-cell :md-label="$t('Price')">{{ asCurrency(item.price) }}</md-table-cell>
-
-                        <md-table-cell :md-label="$t('Cost')">{{ asCurrency(item.cost) }}</md-table-cell>
-
-                        <md-table-cell :md-label="$t('Income')">
-                           <span :class="markupClass(item)">{{ formatItemMarkup(item) }}</span>
-                           <md-tooltip md-direction="top">
-                              <translate>Incomes compared to losses</translate>
-                           </md-tooltip>
-                        </md-table-cell>
-
-                        <md-table-cell>
-                           <a href="#" @click="deleteOrder()">
-                              <md-icon>delete</md-icon>
-                              <md-tooltip md-direction="top">
-                                 <translate>Delete an order</translate>
-                              </md-tooltip>
-                           </a>
-                           &nbsp;&nbsp;&nbsp;
-                           <a href="#" @click="sendCustomerNotification()">
-                              <md-icon>send</md-icon>
-                              <md-tooltip md-direction="top">
-                                 <translate>Send an e-mail to customer</translate>
-                              </md-tooltip>
-                           </a>
-                        </md-table-cell>
-                     </md-table-row>
-                  </md-table>
+                  <md-orders-table :orders="unfinishedOrders"/>
 
                   <div class="md-layout-item md-size-100 text-right">
                      <md-button class="md-raised md-success" @click="createOrder()">
@@ -82,6 +31,8 @@
                   <md-checkbox v-model="showArchived">
                      <translate>Show archived orders</translate>
                   </md-checkbox>
+
+                  <md-orders-table v-if="showArchived" :orders="finishedOrders"/>
                </md-card-content>
             </md-card>
          </div>
@@ -90,10 +41,10 @@
 </template>
 
 <script>
-import {VerbalTime} from "@/components";
+import {VerbalTime, MdOrdersTable} from "@/components";
 
 export default {
-    components: {VerbalTime},
+    components: {VerbalTime, MdOrdersTable},
     data() {
         return {
             showArchived: false,
@@ -105,7 +56,7 @@ export default {
                     productsAll: 2,
                     price: 367.38,
                     cost: 237.38,
-                    due: new Date(2019, 1, 4, 0, 3, 0, 0),
+                    due: new Date(2019, 1, 6, 0, 3, 0, 0),
                 },
                 {
                     id: 16,
@@ -114,7 +65,7 @@ export default {
                     productsAll: 1,
                     price: 561.42,
                     cost: 237.38,
-                    due: new Date(2019, 1, 4, 22, 30, 0, 0),
+                    due: new Date(2019, 1, 6, 22, 30, 0, 0),
                 },
                 {
                     id: 17,
@@ -123,7 +74,7 @@ export default {
                     productsAll: 3,
                     price: 561.42,
                     cost: 570.35,
-                    due: new Date(2019, 1, 4, 0, 23, 0, 0),
+                    due: new Date(2019, 1, 6, 0, 23, 0, 0),
                 },
                 {
                     id: 18,
@@ -132,7 +83,7 @@ export default {
                     productsAll: 14,
                     price: 1435.42,
                     cost: 87.35,
-                    due: new Date(2019, 1, 5, 13, 30, 0, 0),
+                    due: new Date(2019, 1, 7, 13, 30, 0, 0),
                 },
                 {
                     id: 19,
@@ -141,7 +92,16 @@ export default {
                     productsAll: 2,
                     price: 786.00,
                     cost: 786.00,
-                    due: new Date(2019, 1, 5, 14, 30, 0, 0),
+                    due: new Date(2019, 1, 8, 14, 30, 0, 0),
+                },
+                {
+                    id: 17,
+                    name: "PL-12-05452",
+                    products: 3,
+                    productsAll: 3,
+                    price: 561.42,
+                    cost: 570.35,
+                    due: new Date(2019, 1, 7, 0, 12, 0, 0),
                 },
                 {
                     id: 20,
@@ -155,34 +115,15 @@ export default {
             ]
         };
     },
+    computed: {
+        unfinishedOrders() {
+            return this.orders.filter(order => order.products < order.productsAll);
+        },
+        finishedOrders() {
+            return this.orders.filter(order => order.products >= order.productsAll);
+        }
+    },
     methods: {
-        asCurrency(value) {
-            return Math.round(value * 100) / 100.0 + ' zł';
-        },
-
-        markupClass(item) {
-            return {
-                "markup-green": item.price > item.cost,
-                "markup-red": item.price < item.cost
-            };
-        },
-
-        formatItemMarkup(item) {
-            let percents = this.formatPercents(item.price / item.cost);
-            return this.leadingPlus(percents);
-        },
-
-        leadingPlus(string) {
-            if (string.startsWith("-")) {
-                return string;
-            }
-            return '+' + string;
-        },
-
-        formatPercents(fraction) {
-            return parseFloat((fraction - 1) * 100).toFixed(2) + "%";
-        },
-
         createOrder() {
             this.$notify({
                 message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
@@ -196,6 +137,7 @@ export default {
                 type: "warning" // "", "info", "success", "warning", "danger"
             });
         },
+
         sendCustomerNotification() {
             this.$notify({
                 message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
@@ -209,21 +151,6 @@ export default {
                 type: "info" // "", "info", "success", "warning", "danger"
             });
         }
-    },
-    watch: {
-        showArchived() {
-            this.showArchivedToggle();
-        }
     }
 };
 </script>
-
-<style>
-   .markup-green {
-      color: green;
-   }
-
-   .markup-red {
-      color: red;
-   }
-</style>

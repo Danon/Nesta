@@ -4,6 +4,7 @@ import StatsCard from "./Cards/StatsCard.vue";
 import NavTabsTable from "./Tables/NavTabsTable.vue";
 import WorkersTable from "./Tables/WorkersTable.vue";
 import ProductsTable from "./Tables/ProductsTable.vue";
+import MdOrdersTable from "./Tables/MdOrdersTable";
 import VerbalTime from "./VerbalTime.vue";
 
 export {
@@ -13,5 +14,6 @@ export {
     NavTabsTable,
     WorkersTable,
     ProductsTable,
+    MdOrdersTable,
     VerbalTime
 };
