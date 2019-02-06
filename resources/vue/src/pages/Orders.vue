@@ -99,8 +99,8 @@ export default {
                     name: "PL-12-05452",
                     products: 3,
                     productsAll: 3,
-                    price: 561.42,
-                    cost: 570.35,
+                    price: 612.61,
+                    cost: 450.56,
                     due: new Date(2019, 1, 7, 0, 12, 0, 0),
                 },
                 {
@@ -109,7 +109,7 @@ export default {
                     products: 2,
                     productsAll: 3,
                     price: 786.15,
-                    cost: 237.38,
+                    cost: 1237.38,
                     due: new Date(2019, 1, 25, 12, 30, 0, 0),
                 }
             ]

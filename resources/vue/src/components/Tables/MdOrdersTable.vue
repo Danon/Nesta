@@ -28,7 +28,10 @@
          <md-table-cell :md-label="$t('Cost')">{{ asCurrency(item.cost) }}</md-table-cell>
 
          <md-table-cell :md-label="$t('Income')">
-            <span :class="markupClass(item)">{{ formatItemMarkup(item) }}</span>
+            <span :class="markupClass(item)" class="d-flex justify-content-between ws-no-wrap">
+               <span>{{ formatAbsoluteMarkup(item) }}</span>
+               <span>{{ formatPercentageMarkup(item) }}</span>
+            </span>
             <md-tooltip md-direction="top">
                <translate>Incomes compared to losses</translate>
             </md-tooltip>
@@ -76,9 +79,18 @@ export default {
             };
         },
 
-        formatItemMarkup(item) {
-            let percents = this.formatPercents(item.price / item.cost);
-            return this.leadingPlus(percents);
+        formatAbsoluteMarkup(item) {
+            if (item.price === item.cost) {
+                return '0.00';
+            }
+            return this.leadingPlus(this.formatPrice(item.price - item.cost)) + 'zł';
+        },
+        formatPercentageMarkup(item) {
+            if (item.price === item.cost) {
+                return '';
+            }
+            let percentageIncrease = this.leadingPlus(this.formatPercentageIncrease(item.price / item.cost));
+            return '(' + percentageIncrease + ')';
         },
 
         leadingPlus(string) {
@@ -88,10 +100,13 @@ export default {
             return '+' + string;
         },
 
-        formatPercents(fraction) {
-            return parseFloat((fraction - 1) * 100).toFixed(2) + "%";
+        formatPercentageIncrease(fraction) {
+            return parseFloat((fraction - 1) * 100).toFixed(2) + '%';
         },
 
+        formatPrice(fraction) {
+            return parseFloat(fraction).toFixed(2);
+        },
     }
 }
 </script>
@@ -103,5 +118,17 @@ export default {
 
    .markup-red {
       color: red;
+   }
+
+   .ws-no-wrap {
+      white-space: nowrap;
+   }
+
+   .d-flex {
+      display: flex;
+   }
+
+   .justify-content-between {
+      justify-content: space-between;;
    }
 </style>
