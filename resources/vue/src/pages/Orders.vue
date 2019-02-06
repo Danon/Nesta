@@ -117,19 +117,24 @@ export default {
                     cost: 1237.38,
                     due: new Date(2019, 1, 25, 12, 30, 0, 0),
                 }
-            ]
+            ],
         };
     },
+
     computed: {
         unfinishedOrders() {
-            return this.orders.filter(order => order.products < order.productsAll);
+            return this.orders.filter(order => !this.isOrderFinished(order));
         },
         finishedOrders() {
-            return this.orders.filter(order => order.products >= order.productsAll);
+            return this.orders.filter(order => this.isOrderFinished(order));
         }
     },
 
     methods: {
+        isOrderFinished(order) {
+            return (order.archived === true) || (order.products >= order.productsAll);
+        },
+
         createOrder() {
             this.$notify({
                 message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
@@ -138,10 +143,17 @@ export default {
         },
 
         deleteOrder(order) {
-            this.$notify({
-                message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
-                type: "warning" // "", "info", "success", "warning", "danger"
-            });
+            const findKey = (array, item) => {
+                for (const key in array) {
+                    if (array.hasOwnProperty(key)) {
+                        if (array[key].id === item.id) {
+                            return key;
+                        }
+                    }
+                }
+            };
+            const key = findKey(this.orders, order);
+            this.$set(this.orders, key, Object.assign(this.orders[key], {archived: true}));
         },
 
         sendCustomerNotification(order) {

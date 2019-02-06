@@ -1,6 +1,6 @@
 <template>
    <md-table v-model="orders">
-      <md-table-row slot="md-table-row" slot-scope="{ item }">
+      <md-table-row slot="md-table-row" slot-scope="{ item }" :key="item.id">
          <md-table-cell :md-label="$t('ID')">#{{ item.id }}</md-table-cell>
 
          <md-table-cell :md-label="$t('Name')">
@@ -21,7 +21,8 @@
          </md-table-cell>
 
          <md-table-cell :md-label="$t('Due')">
-            <verbal-time v-if="item.products < item.productsAll" :date="item.due"></verbal-time>
+            <translate v-if="item.archived">Archived</translate>
+            <verbal-time v-else-if="item.products < item.productsAll" :date="item.due"></verbal-time>
             <translate v-else>Finished</translate>
          </md-table-cell>
 
@@ -45,7 +46,7 @@
          </md-table-cell>
 
          <md-table-cell>
-            <a href="#" @click="deleteOrder(item)">
+            <a href="#" @click="deleteOrder(item)" v-if="canDelete(item)">
                <md-icon>delete</md-icon>
                <md-tooltip md-direction="top">
                   <translate>Delete an order</translate>
@@ -79,6 +80,13 @@ export default {
             this.$emit('delete', order);
         },
 
+        canDelete(order) {
+            if (order.archived) {
+                return false;
+            }
+            return order.products < order.productsAll;
+        },
+
         sendCustomerNotification(item) {
             this.$emit('notify', item);
         },
@@ -100,6 +108,7 @@ export default {
             }
             return this.leadingPlus(this.formatPrice(item.price - item.cost)) + 'zł';
         },
+
         formatPercentageMarkup(item) {
             if (item.price === item.cost) {
                 return '';
