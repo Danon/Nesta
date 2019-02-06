@@ -99,6 +99,7 @@ const translations = {
     "New note": {pl: "Nowa notatka"},
     "There are no notes.": {pl: "Nie ma żadnych notatek."},
     "Missing": {pl: "Brak"},
+    "ID": {pl: "ID"}
 };
 
 function transformToI18nFormat(map) {

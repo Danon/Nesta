@@ -45,14 +45,14 @@
          </md-table-cell>
 
          <md-table-cell>
-            <a href="#" @click="deleteOrder()">
+            <a href="#" @click="deleteOrder(item)">
                <md-icon>delete</md-icon>
                <md-tooltip md-direction="top">
                   <translate>Delete an order</translate>
                </md-tooltip>
             </a>
             &nbsp;&nbsp;&nbsp;
-            <a href="#" @click="sendCustomerNotification()">
+            <a href="#" @click="sendCustomerNotification(item)">
                <md-icon>send</md-icon>
                <md-tooltip md-direction="top">
                   <translate>Send an e-mail to customer</translate>
@@ -75,6 +75,14 @@ export default {
         }
     },
     methods: {
+        deleteOrder(order) {
+            this.$emit('delete', order);
+        },
+
+        sendCustomerNotification(item) {
+            this.$emit('notify', item);
+        },
+
         asCurrency(value) {
             return Math.round(value * 100) / 100.0 + ' zł';
         },

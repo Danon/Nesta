@@ -13,7 +13,9 @@
                </md-card-header>
 
                <md-card-content>
-                  <md-orders-table :orders="unfinishedOrders"/>
+                  <md-orders-table :orders="unfinishedOrders"
+                                   @delete="deleteOrder"
+                                   @notify="sendCustomerNotification"/>
 
                   <div class="md-layout-item md-size-100 text-right">
                      <md-button class="md-raised md-success" @click="createOrder()">
@@ -32,7 +34,10 @@
                      <translate>Show archived orders</translate>
                   </md-checkbox>
 
-                  <md-orders-table v-if="showArchived" :orders="finishedOrders"/>
+                  <md-orders-table v-if="showArchived"
+                                   :orders="finishedOrders"
+                                   @delete="deleteOrder"
+                                   @notify="sendCustomerNotification"/>
                </md-card-content>
             </md-card>
          </div>
@@ -123,6 +128,7 @@ export default {
             return this.orders.filter(order => order.products >= order.productsAll);
         }
     },
+
     methods: {
         createOrder() {
             this.$notify({
@@ -131,14 +137,14 @@ export default {
             });
         },
 
-        deleteOrder() {
+        deleteOrder(order) {
             this.$notify({
                 message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "warning" // "", "info", "success", "warning", "danger"
             });
         },
 
-        sendCustomerNotification() {
+        sendCustomerNotification(order) {
             this.$notify({
                 message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "warning" // "", "info", "success", "warning", "danger"
