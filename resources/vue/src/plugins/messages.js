@@ -87,6 +87,7 @@ const translations = {
     "Edit resource information": {pl: "Edytuj informacje o materiale"},
     "Add certificate": {pl: "Dodaj certyfikat"},
     "Add resource": {pl: "Dodaj materiał"},
+    "Amount and prices of purchased materials": {pl: "Ilość i ceny zakupionych materiałów"},
     "Definition": {pl: "Definicja"},
     "Quantity": {pl: "Ilość"},
     "Certificate": {pl: "Certyfikat"},
