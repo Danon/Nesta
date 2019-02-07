@@ -101,6 +101,7 @@ const translations = {
     "Missing": {pl: "Brak"},
     "ID": {pl: "ID"},
     "Archived": {pl: "Zarchiwizowane"},
+    "Restore an order": {pl: "Przywróć zamówienie"},
 };
 
 function transformToI18nFormat(map) {

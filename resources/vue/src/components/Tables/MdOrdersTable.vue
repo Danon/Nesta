@@ -52,11 +52,22 @@
                   <translate>Delete an order</translate>
                </md-tooltip>
             </a>
+
             &nbsp;&nbsp;&nbsp;
+
             <a href="#" @click="sendCustomerNotification(item)">
                <md-icon>send</md-icon>
                <md-tooltip md-direction="top">
                   <translate>Send an e-mail to customer</translate>
+               </md-tooltip>
+            </a>
+
+            &nbsp;&nbsp;&nbsp;
+
+            <a href="#" @click="restoreOrder(item)" v-if="canRestore(item)">
+               <md-icon>settings_backup_restore</md-icon>
+               <md-tooltip md-direction="top">
+                  <translate>Restore an order</translate>
                </md-tooltip>
             </a>
          </md-table-cell>
@@ -80,11 +91,19 @@ export default {
             this.$emit('delete', order);
         },
 
+        restoreOrder(order) {
+            this.$emit('restore', order);
+        },
+
         canDelete(order) {
             if (order.archived) {
                 return false;
             }
             return order.products < order.productsAll;
+        },
+
+        canRestore(order) {
+            return order.archived;
         },
 
         sendCustomerNotification(item) {

@@ -37,6 +37,7 @@
                   <md-orders-table v-if="showArchived"
                                    :orders="finishedOrders"
                                    @delete="deleteOrder"
+                                   @restore="restoreOrder"
                                    @notify="sendCustomerNotification"/>
                </md-card-content>
             </md-card>
@@ -143,17 +144,13 @@ export default {
         },
 
         deleteOrder(order) {
-            const findKey = (array, item) => {
-                for (const key in array) {
-                    if (array.hasOwnProperty(key)) {
-                        if (array[key].id === item.id) {
-                            return key;
-                        }
-                    }
-                }
-            };
             const key = findKey(this.orders, order);
             this.$set(this.orders, key, Object.assign(this.orders[key], {archived: true}));
+        },
+
+        restoreOrder(order) {
+            const key = findKey(this.orders, order);
+            this.$set(this.orders, key, Object.assign(this.orders[key], {archived: false}));
         },
 
         sendCustomerNotification(order) {
@@ -168,6 +165,16 @@ export default {
                 message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "info" // "", "info", "success", "warning", "danger"
             });
+        }
+    }
+};
+
+const findKey = (array, item) => {
+    for (const key in array) {
+        if (array.hasOwnProperty(key)) {
+            if (array[key].id === item.id) {
+                return key;
+            }
         }
     }
 };
