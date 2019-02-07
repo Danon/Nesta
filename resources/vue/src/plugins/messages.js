@@ -103,6 +103,7 @@ const translations = {
     "ID": {pl: "ID"},
     "Archived": {pl: "Zarchiwizowane"},
     "Restore an order": {pl: "Przywróć zamówienie"},
+    "Application version": {pl: "Wersja aplikacji"},
 };
 
 function transformToI18nFormat(map) {

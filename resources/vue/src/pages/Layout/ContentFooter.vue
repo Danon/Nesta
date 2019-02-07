@@ -4,6 +4,11 @@
          <nav>
             <ul>
                <li>
+                  <a href="https://github.com/Danon/Nesta/releases" target="_blank">
+                     <translate>Application version</translate>
+                     : v0.3.0
+                  </a>
+               <li>
                   <router-link :to="{ path: '/dashboard' }">Dashboard</router-link>
                </li>
                <li>
@@ -23,6 +28,7 @@
                </li>
                <li>
                   <language-picker @input="changeLocale"/>
+               </li>
                </li>
             </ul>
          </nav>
