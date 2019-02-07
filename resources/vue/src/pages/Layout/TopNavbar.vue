@@ -86,3 +86,9 @@ export default {
     }
 };
 </script>
+
+<style>
+   .md-autocomplete input.md-input {
+      min-width: 400px;
+   }
+</style>
