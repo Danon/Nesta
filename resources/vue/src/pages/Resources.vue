@@ -14,7 +14,7 @@
 
                <md-card-content>
                   <div>
-                     <md-table v-model="users">
+                     <md-table v-model="resources">
                         <md-table-row slot="md-table-row" slot-scope="{ item }">
                            <md-table-cell :md-label="$t('Definition')">{{ item.definition }}</md-table-cell>
                            <md-table-cell :md-label="$t('Quantity')">{{ item.quantity }} {{ item.unit }}</md-table-cell>
@@ -46,6 +46,12 @@
                                     <translate>Edit resource information</translate>
                                  </md-tooltip>
                               </a>
+                              <a href="#" @click="transformResource()">
+                                 <md-icon>transfer_within_a_station</md-icon>
+                                 <md-tooltip md-direction="top">
+                                    <translate>Transform resource</translate>
+                                 </md-tooltip>
+                              </a>
                            </md-table-cell>
                         </md-table-row>
                      </md-table>
@@ -65,10 +71,13 @@
 </template>
 
 <script>
+import NewResourceDialog from './NewResourceDialog';
+
 export default {
+    components: {NewResourceDialog},
     data() {
         return {
-            users: [
+            resources: [
                 {
                     definition: "Rurka",
                     quantity: 200,
@@ -141,7 +150,14 @@ export default {
                 message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
                 type: "warning" // "", "info", "success", "warning", "danger"
             });
-        }
+        },
+
+        transformResource() {
+            this.$notify({
+                message: this.$t("This feature is not ready yet. Wait for a new version of the application"),
+                type: "warning" // "", "info", "success", "warning", "danger"
+            });
+        },
     }
 };
 </script>
